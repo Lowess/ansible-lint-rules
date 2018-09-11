@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Set a fact without underscore scoping
+      set_fact:
+        test_fact: 'This fact should be named __test_fact'
+
+    - name: Register a fact without underscore scoping
+      command: >
+        echo 'This register statement should be named __test_register'
+      changed_when: false
+      register: test_register
